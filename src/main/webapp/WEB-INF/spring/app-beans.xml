@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+            
+    <!-- Users -->
+    <bean id="userServiceImpl" class="org.lalosuarez.app.service.UserServiceImpl">
+        <property name="sessionFactoryService" ref="sessionFactoryService"/>
+    </bean>
+  
+    <bean id="userAction" class="org.lalosuarez.app.action.UserAction">
+    	<property name="service" ref="userServiceImpl" />
+    	<property name="roleService" ref="roleServiceImpl" />
+    	<property name="encoder" ref="encoderService" />
+    </bean>
+        
+    <!-- Roles -->	
+    <bean id="roleServiceImpl" class="org.lalosuarez.app.service.RoleServiceImpl">
+        <property name="sessionFactoryService" ref="sessionFactoryService"/>
+    </bean>
+    
+    <bean id="roleAction" class="org.lalosuarez.app.action.RoleAction">
+    	<property name="service" ref="roleServiceImpl" />
+    </bean>
+           
+             
+    <!-- Leagues -->
+    <bean id="leagueDaoImpl" class="org.lalosuarez.app.dao.LeagueDaoImpl">
+    	<property name="sessionFactoryService" ref="sessionFactoryService" />
+    </bean>	
+    
+    <bean id="leagueServiceImpl" class="org.lalosuarez.app.service.LeagueServiceImpl">
+    	<property name="dao" ref="leagueDaoImpl" />
+    </bean>
+    
+    <bean id="leagueAction" class="org.lalosuarez.app.action.LeagueAction">
+    	<property name="service" ref="leagueServiceImpl" />
+    </bean>
+
+
+    <!-- Teams -->
+    <bean id="teamDaoImpl" class="org.lalosuarez.app.dao.TeamDaoImpl">
+    	<property name="sessionFactoryService" ref="sessionFactoryService" />
+    </bean>
+    	    
+    <bean id="teamServiceImpl" class="org.lalosuarez.app.service.TeamServiceImpl">
+        <property name="dao" ref="teamDaoImpl" />
+    </bean>
+    
+    <bean id="teamAction" class="org.lalosuarez.app.action.TeamAction">
+        <property name="service" ref="teamServiceImpl" />
+        <property name="leagueService" ref="leagueServiceImpl" />
+    </bean>    
+
+
+    <!-- Tournaments -->
+    <bean id="tournamentDaoMongoImpl" class="org.lalosuarez.app.dao.TournamentDaoMongoImpl" />
+
+    <bean id="tournamentDaoImpl" class="org.lalosuarez.app.dao.TournamentDaoImpl">
+    	<property name="sessionFactoryService" ref="sessionFactoryService" />
+    </bean>
+            
+    <bean id="tournamentServiceImpl" class="org.lalosuarez.app.service.TournamentServiceImpl">
+         <property name="dao" ref="tournamentDaoImpl" />
+<!--          <property name="dao" ref="tournamentDaoMongoImpl" /> -->
+    </bean>
+    
+    <bean id="tournamentAction" class="org.lalosuarez.app.action.TournamentAction">
+        <property name="service" ref="tournamentServiceImpl" />
+        <property name="leagueService" ref="leagueServiceImpl" />
+        <property name="paginatorService" ref="paginatorService" />
+    </bean>
+</beans>
+    

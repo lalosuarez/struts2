@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <include file="struts-security.xml" />
+	
+    <package name="loginPackage" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <action name="index">
+            <result type="redirect">/admin/teams/list</result>
+        </action>
+        
+        <action name="login">
+            <result>/views/login.jsp</result>
+        </action>
+    
+    </package>
+	
+	<package name="leaguePackage" namespace="/admin/leagues" extends="struts-default, json-default">
+        
+        <default-action-ref name="list"/>
+        
+		<action name="add" class="leagueAction" method="add">
+			<result name="success">/views/leagues/form.jsp</result>
+		</action>
+
+        <action name="list" class="leagueAction" method="list">
+            <result name="success">/views/leagues/list.jsp</result>
+        </action>
+
+        <action name="save" class="leagueAction" method="save">
+            <result name="success" type="redirect">list</result>
+        </action>
+
+        <action name="edit" class="leagueAction" method="edit">
+            <result name="success">/views/leagues/form.jsp</result>
+        </action>
+
+        <action name="activate" class="leagueAction" method="activate">
+            <result name="success" type="redirect">list</result>
+        </action>
+
+        <action name="getAllJson" class="leagueAction" method="getAllJson">
+            <result type="json">         
+				<param name="includeProperties">
+					 leagues\[\d+\]\.\w+,
+					 leagues\[\d+\]\.\w+\[\d+\]\.id,
+					 leagues\[\d+\]\.\w+\[\d+\]\.name
+				</param>    
+				<!-- <param name="root">leagues\[\d+\]\.name</param> -->
+            </result>    
+        </action>                    
+	</package>
+
+    <package name="teamPackage" namespace="/admin/teams" extends="struts-default, json-default">
+        
+        <default-action-ref name="list"/>
+        
+        <action name="add" class="teamAction" method="add">
+            <result name="success">/views/teams/form.jsp</result>
+        </action>
+                
+        <action name="list" class="teamAction" method="list">
+            <result name="success">/views/teams/list.jsp</result>
+        </action>
+
+        <action name="save" class="teamAction" method="save">
+            <result name="success" type="redirect">list</result>
+        </action>
+
+        <action name="edit" class="teamAction" method="edit">
+            <result name="success">/views/teams/form.jsp</result>
+        </action>
+
+        <action name="activate" class="teamAction" method="activate">
+            <result name="success" type="redirect">list</result>
+        </action>                             
+    </package>
+    
+    <package name="userPackage" namespace="/admin/users" extends="struts-default, json-default">
+        
+        <default-action-ref name="list"/>
+        
+        <action name="add" class="userAction" method="add">
+            <result name="success">/views/users/form.jsp</result>
+        </action>
+                
+        <action name="list" class="userAction" method="list">
+            <result name="success">/views/users/list.jsp</result>
+        </action>
+
+        <action name="save" class="userAction" method="save">
+            <result name="success" type="redirect">list</result>
+        </action>
+
+        <action name="edit" class="userAction" method="edit">
+            <result name="success">/views/users/form.jsp</result>
+        </action>
+
+        <action name="activate" class="userAction" method="activate">
+            <result name="success" type="redirect">list</result>
+        </action>                     
+    </package>
+    
+    <package name="rolePackage" namespace="/admin/roles" extends="struts-default, json-default">
+    	
+    	<default-action-ref name="getAllJson"/>
+    	
+        <action name="getAllJson" class="roleAction" method="getAllJson">
+            <result type="json">
+                <param name="root">roles</param>
+            </result>    
+        </action>      	
+    </package>
+    
+	<package name="tournamentPackage" namespace="/admin/tournaments" extends="struts-default, json-default">
+        
+        <default-action-ref name="list"/>
+        
+		<action name="add" class="tournamentAction" method="add">
+			<result name="success">/views/tournaments/form.jsp</result>
+		</action>
+
+        <action name="list" class="tournamentAction" method="list">
+            <result name="success">/views/tournaments/list.jsp</result>
+        </action>
+
+        <action name="save" class="tournamentAction" method="save">
+            <result name="success" type="redirect">list</result>
+        </action>
+
+        <action name="edit" class="tournamentAction" method="edit">
+            <result name="success">/views/tournaments/form.jsp</result>
+        </action>
+
+        <action name="activate" class="tournamentAction" method="activate">
+            <result name="success" type="redirect">list</result>
+        </action>
+
+        <action name="search" class="tournamentAction" method="search">
+            <result name="success" type="redirect">list</result>
+        </action>
+        
+        <action name="getAllJson" class="tournamentAction" method="getAllJson">
+            <result type="json">
+                <param name="root">tournaments</param>
+            </result>    
+        </action>                    
+	</package>    
+</struts>

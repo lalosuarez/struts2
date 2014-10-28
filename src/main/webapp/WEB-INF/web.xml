@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app id="struts_blank" version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  	<display-name>Struts Blank</display-name>
+	
+	<filter>
+        <filter-name>struts2-prepare</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareFilter</filter-class>
+    </filter>
+
+    <!-- Sitemesh decorators -->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+    </filter>
+
+    <!-- Spring Security -->
+    <filter>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter> 
+
+    <filter>
+        <filter-name>struts2-execute</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsExecuteFilter</filter-class>
+    </filter>
+	
+	<filter-mapping>
+      <filter-name>struts2-prepare</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- Sitemesh decorators -->
+    <filter-mapping>
+      <filter-name>sitemesh</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Spring Security -->
+    <filter-mapping>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping> 
+
+    <filter-mapping>
+      <filter-name>struts2-execute</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+     
+    <servlet>
+    	<description>Servlet Description</description>
+    	<display-name>TestServlet</display-name>
+    	<servlet-name>TestServlet</servlet-name>
+    	<servlet-class>org.lalosuarez.app.action.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>TestServlet</servlet-name>
+    	<url-pattern>/servlet/testServlet</url-pattern>
+    </servlet-mapping>
+
+ 	<servlet>
+ 		<servlet-name>jersey-serlvet</servlet-name>
+		
+		<servlet-class>
+<!--         	com.sun.jersey.spi.container.servlet.ServletContainer -->
+        	com.sun.jersey.spi.spring.container.servlet.SpringServlet
+        </servlet-class>
+		
+		<init-param>
+		     <param-name>com.sun.jersey.config.property.packages</param-name>
+		     <param-value>org.lalosuarez.app.webservice</param-value>
+		</init-param>
+		
+	    <init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<load-on-startup>1</load-on-startup>        	
+ 	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	 		
+	<welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+	  <welcome-file>default.jsp</welcome-file>
+      <welcome-file>index.html</welcome-file>
+    </welcome-file-list> 
+</web-app>
