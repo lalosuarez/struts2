@@ -3,8 +3,8 @@ var app = angular.module('app',[]);
 app.controller('TeamCtrl', function($scope, $http, $filter) {
   
   $scope.loadLeagues = function() {
-	console.log("Loading...")
-	var uri = "../rest/json/leagues";
+	console.log("Loading...");
+	var uri = "../../rest/json/leagues";
     $.ajax({
         url: uri,
         type: 'GET',
@@ -22,6 +22,7 @@ app.controller('TeamCtrl', function($scope, $http, $filter) {
           
           $.each(data, function(key, value) {
               json.push({"label":value['name'], "id":value['id']});
+              //console.log(value['name']);
           });          
           
           var input = document.getElementById("leagueInput");   
