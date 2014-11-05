@@ -6,6 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.lalosuarez.app.dao.LeagueDao;
 import org.lalosuarez.app.dto.League;
 import org.lalosuarez.app.service.SessionFactoryService;
 
@@ -22,7 +24,8 @@ public class LeagueDaoImpl implements LeagueDao {
 		try {
 			session.beginTransaction();
 	
-			Criteria criteria = session.createCriteria(League.class);
+			Criteria criteria = session.createCriteria(League.class)
+				.addOrder(Order.asc("name"));
 			criteria.setCacheable(true);
 			
 			list = criteria.list();
