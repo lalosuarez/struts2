@@ -16,14 +16,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.opensymphony.xwork2.ActionContext;
 
+
 public class AuthenticationServiceProvider implements UserDetailsService {
 	
 	private UserService service;
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+				
 		try {
 			org.lalosuarez.app.dto.User user = service.find(username);
-					
+						
 			List<GrantedAuthority> authorities = buildUserAuthority(getAuthorities(user.getRole().getRole()));
 			
             if (user != null) {
@@ -35,7 +37,7 @@ public class AuthenticationServiceProvider implements UserDetailsService {
             return buildUserForAuthentication(user, authorities);
 			
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}
@@ -62,7 +64,7 @@ public class AuthenticationServiceProvider implements UserDetailsService {
 	 * org.springframework.security.core.userdetails.User
 	 */
 	private User buildUserForAuthentication(org.lalosuarez.app.dto.User user, List<GrantedAuthority> authorities) {
-		return new User(user.getUsername(),user.getUsername(), user.isEnabled(), true, true, true, authorities);
+		return new User(user.getUsername(),user.getPassword(), user.isEnabled(), true, true, true, authorities);
 	}
 		
 	public UserService getService() {

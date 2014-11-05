@@ -4,9 +4,11 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-    <include file="struts-security.xml" />
+<!--     <include file="struts-security.xml" /> -->
 	
-    <package name="loginPackage" namespace="/" extends="struts-default">
+<!-- 	<constant name="struts.action.excludePattern" value="/servlet/testServlet"></constant> -->
+	
+    <package name="loginPackage" namespace="/login" extends="struts-default">
 
         <default-action-ref name="index" />
 
@@ -14,7 +16,7 @@
             <result type="redirect">/admin/teams/list</result>
         </action>
         
-        <action name="login">
+        <action name="require">
             <result>/views/login.jsp</result>
         </action>
     

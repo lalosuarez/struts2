@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+	
+<!-- 	<endpoint name="LeagueSoapWebService"
+		implementation="org.lalosuarez.app.webservice.LeagueSoapWebServiceImpl"
+		url-pattern="/soap/sun/soccer/leagues" />
+
+	<endpoint name="TeamSoapWebService"
+		implementation="org.lalosuarez.app.webservice.TeamSoapWebServiceImpl"
+		url-pattern="/soap/sun/soccer/teams" />		 -->
+		
+</endpoints>

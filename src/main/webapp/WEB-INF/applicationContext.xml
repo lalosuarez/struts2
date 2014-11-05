@@ -11,7 +11,7 @@
 
 	
     <import resource="spring/security.xml" />
-    <import resource="spring/commons.xml" />
+    <import resource="spring/common-beans.xml" />
     <import resource="spring/app-beans.xml" />
     <import resource="spring/ws-beans.xml" />
        

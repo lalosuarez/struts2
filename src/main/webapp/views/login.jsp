@@ -10,7 +10,7 @@
 	<title>Login</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">	
+    <link rel="stylesheet" type="text/css" href="../css/style.css">	
 	<s:head />	
 </head>
 <body>
@@ -20,7 +20,7 @@
 	   <div class="alert alert-danger">Bad Credentials.</div><br>
 	</s:if>
 
- 	<form action="j_spring_security_check" class="form" method="POST">
+ 	<form action="../j_spring_security_check" class="form" method="POST">
 		<div class="form-group">
 			<input type="text" name="userName" class="form-control" placeholder="Username"/>
   		</div>
@@ -32,7 +32,9 @@
 		<div class="form-group">
 			<input type="submit" class="btn btn-primary" value="Log in" />
 		</div>
-	</form>	
+
+	</form>
+
 </body>
 </html>
 	
