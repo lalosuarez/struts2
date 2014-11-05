@@ -3,8 +3,6 @@ package org.lalosuarez.app.webservice;
 import java.util.List;
 
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.jws.soap.SOAPBinding.Style;
 
 import org.lalosuarez.app.dto.League;
 import org.lalosuarez.app.service.LeagueService;
@@ -14,13 +12,12 @@ import org.lalosuarez.app.service.LeagueService;
 	portName="LeagueServicePort",
 	serviceName="LeagueWebService"
 )
-@SOAPBinding(style=Style.DOCUMENT)
 public class LeagueSoapWebServiceImpl implements LeagueWebService {
 
 	private LeagueService service;
 	
 	@Override
-	public List<League> findAll() {
+	public List<League> findLeagues() {
 		
  		List<League> list = service.findAll();
  		
@@ -34,7 +31,7 @@ public class LeagueSoapWebServiceImpl implements LeagueWebService {
 	}
 
 	@Override
-	public League find(int id) {
+	public League findLeague(int id) {
 		
 		League object = service.find(id);
 		

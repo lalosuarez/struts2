@@ -21,7 +21,7 @@ public class LeagueWebServiceImpl implements LeagueWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<League> findAll() {
+	public List<League> findLeagues() {
 
  		List<League> list = service.findAll();
  		
@@ -37,7 +37,7 @@ public class LeagueWebServiceImpl implements LeagueWebService {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public League find(@PathParam("id") int id) {
+	public League findLeague(@PathParam("id") int id) {
 				
 		League object = service.find(id);
 		

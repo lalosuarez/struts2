@@ -18,11 +18,11 @@ import org.lalosuarez.app.dto.Team;
 @SOAPBinding(style=Style.DOCUMENT)
 public interface TeamWebService {
 
-	@WebMethod(action="find-teams", operationName="findAll")
+	@WebMethod(action="find-teams", operationName="findTeams")
 	@WebResult(name="Team")	
-	public List<Team> findAll();
+	public List<Team> findTeams();
 	
-	@WebMethod(action="find-team", operationName="find")
+	@WebMethod(action="find-team", operationName="findTeam")
 	@WebResult(name="Team")
-	public Team find(@PathParam("id") int id);
+	public Team findTeam(@PathParam("id") int id);
 }

@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.lalosuarez.app.dto.Team;
 import org.lalosuarez.app.service.SessionFactoryService;
 
@@ -21,7 +22,8 @@ public class TeamDaoImpl implements TeamDao {
 		try {
 			session.beginTransaction();
 			
-			Criteria criteria = session.createCriteria(Team.class);
+			Criteria criteria = session.createCriteria(Team.class)
+				.addOrder(Order.asc("name"));
 			criteria.setCacheable(true);
 			list = criteria.list();
 			

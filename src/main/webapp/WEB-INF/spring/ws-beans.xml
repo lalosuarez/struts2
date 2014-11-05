@@ -23,11 +23,11 @@
         </wss:service>
     </wss:binding>
     
-<!-- 	<wss:binding url="/soap/soccer/teams">
+	<wss:binding url="/soap/soccer/teams">
         <wss:service>
             <ws:service bean="#teamSoapWebService"/>
         </wss:service>
-    </wss:binding>     -->
+    </wss:binding>    
     
     <!-- Web Services -->
     <bean id="teamWebService" class="org.lalosuarez.app.webservice.TeamWebServiceImpl">

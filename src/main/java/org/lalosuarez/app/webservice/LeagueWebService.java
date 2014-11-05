@@ -18,11 +18,11 @@ import org.lalosuarez.app.dto.League;
 @SOAPBinding(style=Style.DOCUMENT)
 public interface LeagueWebService {
 	
-	@WebMethod(action="find-leagues", operationName="findAll")
+	@WebMethod(action="find-leagues", operationName="findLeagues")
 	@WebResult(name="League")	
-	public List<League> findAll();
+	public List<League> findLeagues();
 
-	@WebMethod(action="find-league", operationName="find")
+	@WebMethod(action="find-league", operationName="findLeague")
 	@WebResult(name="League")
-	public League find(@PathParam("id") int id);
+	public League findLeague(@PathParam("id") int id);
 }

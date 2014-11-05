@@ -17,7 +17,7 @@ public class TeamSoapWebServiceImpl implements TeamWebService {
 	private TeamService service;
 
 	@Override	
-	public List<Team> findAll() {
+	public List<Team> findTeams() {
  		List<Team> list = service.findAll();
  		
  		if (!list.isEmpty()) {
@@ -30,7 +30,7 @@ public class TeamSoapWebServiceImpl implements TeamWebService {
 	}
 
 	@Override		
-	public Team find(int id) {
+	public Team findTeam(int id) {
 		Team object = service.find(id);
 		
 		if (object != null) {

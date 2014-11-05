@@ -21,7 +21,7 @@ public class TeamWebServiceImpl implements TeamWebService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Team> findAll() {
+	public List<Team> findTeams() {
 
  		List<Team> list = service.findAll();
  		
@@ -35,7 +35,7 @@ public class TeamWebServiceImpl implements TeamWebService {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Team find(@PathParam("id") int id) {
+	public Team findTeam(@PathParam("id") int id) {
  		Team object = service.find(id);
  		object.setLeague(null);
 		return object;

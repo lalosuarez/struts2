@@ -127,13 +127,8 @@
 	
 	<servlet-mapping>
 		<servlet-name>jaxws-servlet</servlet-name>
-		<url-pattern>/soap/soccer/leagues</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>jaxws-servlet</servlet-name>
 		<url-pattern>/soap/*</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 	
 	<listener>
 		<listener-class>
