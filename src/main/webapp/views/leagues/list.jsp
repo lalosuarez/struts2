@@ -56,7 +56,10 @@
                     </s:iterator>
                 </tbody>
             </table>    
-        </s:else>         
+        </s:else>
+        
+        <jsp:include page="../pagination/paginator.jsp" />
+        
     </div>     
 </body>
 </html>

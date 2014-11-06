@@ -21,9 +21,9 @@
     
     <property name="hibernate.hbm2ddl.auto">update</property>
     
-    <mapping class="org.lalosuarez.app.dto.League" />
+    <mapping resource="/mappings/league.hbm.xml" />
     <mapping class="org.lalosuarez.app.dto.Team" />
-    <mapping class="org.lalosuarez.app.dto.Tournament" />
+    <mapping resource="/mappings/tournament.hbm.xml" />
     <mapping class="org.lalosuarez.app.dto.User" />
     <mapping class="org.lalosuarez.app.dto.Role" />
   </session-factory>

@@ -71,38 +71,7 @@
             </tbody>
         </table>
         
-		<ul class="pagination">
-			<s:set name="backwardItem" value="page - 1"/>
-		  	<s:set name="lastItem" value="paginationItems.size()"/>
-		  	<s:set name="forwardItem" value="page + 1"/>
-	  		
-	  		<s:if test="#backwardItem == 0">
-				<li><a href="">&laquo;</a></li>	  		
-	  		</s:if>
-	  		<s:else>
-				<li><a href="?page=<s:property value='#backwardItem'/>">&laquo;</a></li>
-	  		</s:else>		  				
-		  	
-		  	<s:iterator value="paginationItems" var="item">
-		  		<s:if test="page == #item">
-			  		<li class="active">
-			  			<a href="?page=<s:property value='#item'/>"><s:property value="#item"/></a>
-			  		</li>		  		
-		  		</s:if>
-		  		<s:else>
-			  		<li>
-			  			<a href="?page=<s:property value='#item'/>"><s:property value="#item"/></a>
-			  		</li>
-		  		</s:else>
-		  	</s:iterator>
-		  	
-	  		<s:if test="#forwardItem == #lastItem + 1">
-		  		<li><a href="">&raquo;</a></li> 		
-	  		</s:if>
-	  		<s:else>
-				<li><a href="?page=<s:property value='#forwardItem'/>">&raquo;</a></li>
-	  		</s:else>			  	
-		</ul>
+		<jsp:include page="../pagination/paginator.jsp" />
 		            
     </s:else>      
 </body>

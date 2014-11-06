@@ -38,6 +38,7 @@
     
     <bean id="leagueAction" class="org.lalosuarez.app.action.LeagueAction">
     	<property name="service" ref="leagueServiceImpl" />
+    	<property name="paginator" ref="paginatorService" />
     </bean>
 
 
@@ -53,6 +54,7 @@
     <bean id="teamAction" class="org.lalosuarez.app.action.TeamAction">
         <property name="service" ref="teamServiceImpl" />
         <property name="leagueService" ref="leagueServiceImpl" />
+        <property name="paginator" ref="paginatorService" />
     </bean>    
 
 

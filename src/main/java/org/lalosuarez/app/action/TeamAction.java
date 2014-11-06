@@ -6,6 +6,7 @@ import org.lalosuarez.app.dto.League;
 import org.lalosuarez.app.dto.Team;
 import org.lalosuarez.app.service.TeamService;
 import org.lalosuarez.app.service.LeagueService;
+import org.lalosuarez.util.paginator.Paginator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -23,9 +24,27 @@ public class TeamAction extends ActionSupport {
 	
 	private League league;
 	 
+	private Paginator paginator;
 	
-    public String list() {
-    	setTeams(service.findAll());
+	private List<Integer> paginationItems;
+	
+	private int page = 1;
+	
+    @SuppressWarnings("unchecked")
+	public String list() {
+    	List<Team> list = service.findAll();
+		
+		paginator.setNumberOfElementsToShow(5);
+		
+		setPaginationItems(
+				paginator.createPaginationItems(list.size())
+		);
+				
+		setPage(page > paginationItems.size() ? 1 : page);
+		
+		setTeams(
+			paginator.paginate(list, page)
+		);
  
         return SUCCESS;
     }
@@ -33,6 +52,7 @@ public class TeamAction extends ActionSupport {
     public String add() {
         setTeam(null);
         setLeague(null);
+        setPage(1);
         
         return SUCCESS;
     }
@@ -47,9 +67,7 @@ public class TeamAction extends ActionSupport {
     public String edit() {
         setTeam(service.find(team.getId()));
         setLeague(team.getLeague());
-        
-        //System.out.println("BELONGS TO " + team.getLeague().getName());
-        
+                
         return SUCCESS;
     }
 
@@ -103,5 +121,29 @@ public class TeamAction extends ActionSupport {
 
 	public void setLeague(League league) {
 		this.league = league;
-	} 
+	}
+	
+	public Paginator getPaginator() {
+		return paginator;
+	}
+
+	public void setPaginator(Paginator paginator) {
+		this.paginator = paginator;
+	}
+
+	public List<Integer> getPaginationItems() {
+		return paginationItems;
+	}
+
+	public void setPaginationItems(List<Integer> paginationItems) {
+		this.paginationItems = paginationItems;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}	
 }

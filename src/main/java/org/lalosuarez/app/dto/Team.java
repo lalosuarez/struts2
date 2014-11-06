@@ -2,6 +2,7 @@ package org.lalosuarez.app.dto;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,25 +18,26 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table (name="teams")
 public class Team {
-    
-    @Id @GeneratedValue
-    @Column (name="team_id")
+
+
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column (name="team_id")
     private int id;
     
-    @Column (name="team_name")
+	@Column (name="team_name")
     private String name;
     
-    @Column (name="team_iso")
+	@Column (name="team_iso")
     private String iso;
-    
-    @OneToOne
-    @JoinColumn (name="league_id")
+
+	@OneToOne
+	@JoinColumn (name="league_id")
     private League league;
     
-    @Column (name="team_logo")
+	@Column (name="team_logo")
     private String logo;
     
-    @Column (name="team_active")
+	@Column (name="team_active")
     private boolean active = true;
     
     public String getName() {
